@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHE Boutique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+       header {
+            background-color: rgb(255, 255, 255);
+            /* padding: 15px; */
+            position: sticky; /* Makes the header sticky */
+            top: 0; /* Sticks to the top of the page */
+            width: 100%;
+            z-index: 1000; /* Ensures header stays on top of other content */
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid rgb(214, 213, 213);
+            border-radius: 20px; /* Rounded corners */
+            padding: 10px 5px;
+            width: 600px;
+            background-color: white;
+            justify-content: center;
+        }
+
+        .search-box i {
+            color: black; /* Icon color */
+            font-size: 16px; /* Adjust icon size */
+            margin-right: 8px; /* Space between the icon and input field */
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-box input::placeholder {
+            color: rgb(174, 173, 173); /* Placeholder text color */
+        }
+
+        .search-box input::-ms-clear {
+            display: none;
+        }
+        .uppart{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .second{
+            display: flex;
+            justify-content: space-between;
+            float: right;
+            /* justify-content: center; */
+            align-items: end;
+            width: 10%;
+            /* margin: 10px ; */
+            padding: 0%;
+            margin: 0%;
+            margin-bottom: 0;
+            padding-bottom: 0%;
+            padding-left: 10px;
+        } 
+        .icon a{
+            color: black;
+        }
+        .icon a:hover i {
+            transform: scale(1.3); /* Slight zoom on hover */
+        } 
+
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 0;
+        }
+
+        .product {
+            position: relative;
+            width: 70px;
+        }
+
+        .product-name {
+            text-align: center;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            bottom: 0;
+            padding-bottom: 10px;
+        }
+
+        .product-name label {
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            color: black;
+            font-size: small;
+            cursor: pointer;
+        }
+
+        /* Hide the checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .product-details1, .product-details {
+            position: absolute;
+            top: 60px;
+            left: 5;
+            right: 15;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            font-family: cursive;
+            font-size: 10px;
+            display: none;
+            width: 170px;
+        }
+
+        /* Toggle the visibility when checkbox is checked */
+        input[type="checkbox"]:checked + .product-name + .product-details1 {
+            display: block;
+            opacity: 1;
+        }
+
+        .product-details1 a {
+            text-decoration: none;
+            color: black;
+        }
+
+            /* Image slider container */
+        .image-slider {
+            position: relative;
+            width: 300%;
+            max-width: 100%; /* Set slider width */
+            height: 350px; /* Set slider height */
+            overflow: hidden; 
+        }
+
+        /* Style each slide */
+        .image-slider .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Smooth fade transition */
+        }
+
+        /* Show the first slide */
+        .image-slider .slide:nth-child(1) {
+            opacity: 1;
+        }
+
+        /* Keyframe animation to cycle through the slides */
+        @keyframes slideShow {
+            20% { opacity: 1; }
+            10% { opacity: 1; }
+            25% { opacity: 0; }
+            95% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Apply animation to each slide with delays */
+        .image-slider .slide:nth-child(1) {
+            animation: slideShow 16s infinite; /* 16 seconds total (4s per image) */
+        }
+        .image-slider .slide:nth-child(2) {
+            animation: slideShow 16s infinite;
+            animation-delay: 4s; /* Start after 4 seconds */
+        }
+        .image-slider .slide:nth-child(3) {
+            animation: slideShow 16s infinite;
+            animation-delay: 8s; /* Start after 8 seconds */
+        }
+        .image-slider .slide:nth-child(4) {
+            animation: slideShow 16s infinite;
+            animation-delay: 12s; /* Start after 12 seconds */
+        }
+
+        /* Ensure images take up full width and height of the slider */
+        .image-slider img {
+            width: 90%;
+            height: 120%;
+            object-fit: cover; /* Ensures the image covers the container without distortion */
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            top: 0;
+        }
+
+   
+        .sale{
+            display: flex;
+            justify-content: space-around;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            line-height: 0%;
+            background-color: white;
+            font-size: 15px;
+            margin: 18px;
+            margin-top: 28px;
+        }
+
+        .heading1{
+            display: flex;
+            justify-content: space-around;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            margin: 18px;
+            margin-top: 0;
+        }
+
+        .filtercontainer {
+            position: relative;
+            display: inline-block;
+            font-size: small;
+            float: right;
+            padding-right: 10%;
+        }
+
+        /* Label for "Sort by:" */
+        .filtercontainer label {
+            display: inline-block;
+            margin-right: 10px;
+            /* vertical-align: middle; */
+            font-size: 9px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Sort Box */
+        .filterbox {
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgb(194, 192, 192);
+            padding: 5px;
+            border-radius: 2px;
+            display: inline-block;
+            color: rgb(146, 144, 144);
+            outline: none;
+            position: relative;
+            min-width: 140px; /* Adjust width */
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .filterbox span::after {
+            content: '\25BC'; /* Unicode for down arrow */
+            margin-left: 10px;
+            font-size: 0.7em; /* Adjust size of the arrow */
+        }
+
+        /* Dropdown Options */
+        .filteroptions {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid white;
+            border-radius: 4px;
+            margin-top: 5px;
+            width: 150px;
+            z-index: 1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Each Option */
+        .filteroption {
+            display: block;
+            padding: 10px;
+            font-size: small;
+            cursor: pointer;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 0;
+        }
+
+        .filteroption:hover {
+            background-color: rgb(8, 116, 189);
+            color: white;
+        }
+
+        /* Show options when the sort-box is clicked or focused */
+        .filterbox:focus + .filteroptions {
+            display: block;
+        }
+
+        .front{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .frontbox{
+            text-align: center;
+        }
+        .frontbox img{
+            width: 150px; /* Adjust size of images */
+            height: 150px; /* Adjust height to match width */
+            border-radius: 10%; /* Makes the border round */
+            border: 5px solid rgb(234, 167, 167); 
+            object-fit: cover; /* Ensures image fits inside the round border */
+        }
+        .frontbox .caption{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 9px;
+            color: rgb(96, 99, 100);
+            margin-top: 10px;
+        }
+        .frontbox img:hover {
+            transform: scale(1.1); /* Zooms in the image on hover */
+        }
+        .another{
+            /* position: absolute; */
+            /* width: 100%;
+            height: 414px; */
+            margin: 5px;
+            /* opacity: 0; */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .horisection{
+            display: flex;
+            justify-content: space-between;
+            justify-content: center;
+        }
+    
+        .horizontal {
+            position: relative;
+            width: 200px;  /* Set the width of the image */
+            height: 300px; /* Set the height of the image */
+            margin: 0 1%; /* Add margin between image containers */
+        }
+
+        .horizontal img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease; 
+            border-radius: 7%;
+            /* transition: opacity 0.5s ease-in-out; */
+        }
+
+        .secondimage, .fourthimage, .sixthimage {
+            opacity: 0; /* Hidden by default */
+            /* transform: scale(1.1) */
+        }
+
+        /* Hover effects for first image pair */
+        .horizontal:hover .firstimage {
+            opacity: 0; /* Hide first image on hover */
+        }
+
+        .horizontal:hover .secondimage {
+            opacity: 1; /* Show second image on hover */
+        }
+
+        /* Hover effects for third image pair */
+        .horizontal:hover .thirdimage {
+            opacity: 0; /* Hide third image on hover */
+        }
+
+        .horizontal:hover .fourthimage {
+            opacity: 1; /* Show fourth image on hover */
+        }
+
+        /* Hover effects for fifth image pair */
+        .horizontal:hover .fifthimage {
+            opacity: 0; /* Hide fifth image on hover */
+        }
+
+        .horizontal:hover .sixthimage {
+            opacity: 1; /* Show sixth image on hover */
+        }
+        .sareecap {
+            margin-top: 310px; /* Space the caption below the image */
+            font-size: 60%;
+            color: #333;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /* align-items: center; */
+            /* justify-content: center; */
+        }
+        .topst1{
+            display: flex;
+            justify-content: center; /* Center the entire headline */
+            margin: 20px 0;
+        }
+        .topst {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            /* font-weight: bold; */
+            margin: 20px 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .topst::before, 
+        .topst::after {
+            content: "";
+            border-bottom: 2px solid #8d8c8c; 
+            margin: 0 10px; /* Spacing between line and text */
+            width: 50px;
+            align-items: center;
+        }
+
+        .festiveshop {
+          display: flex;
+          flex-wrap: wrap; /* Allows wrapping of items to the next row */
+          gap: 20px;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .fest1 {
+            position: relative;
+            width: 200px;
+            text-align: center; 
+        }
+
+        .fest1 img {
+            width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .festdetails {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            height: 200px;
+        }
+
+        .fest1:hover .festdetails {
+          opacity: 1;
+        }
+
+        .festdetails .size-chart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 10px; /* Space between size chart and add-to-cart button */
+        }
+
+        .festdetails .size-chart button {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .festdetails .size-chart button:hover {
+            background-color: #ddd;
+        }
+
+        .addtocart{
+            background-color: #ff6666; /* Light red background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .addtocart:hover {
+            background-color: #ff4d4d; /* Darker red on hover */
+        }
+
+        .festcaption {
+          margin-top: 10px;
+          /* font-size: 16px; */
+          font-size: 10px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         margin-bottom: 10px;
+        }
+
+
+        .imagerow5 {
+            display: flex;
+            justify-content: space-between; /* Ensures images are spaced evenly */
+            gap: 10px; /* Space between images */
+            margin-bottom: 20px;
+        }
+
+        .imageitem5 {
+            text-align: center;
+            flex: 1; /* Ensures each item takes equal width */
+        }
+
+        .imageitem5 img {
+            width: 100%; /* Makes the image responsive */
+            /* max-width: 150px;  Sets a maximum width for each image  */
+            height: auto; /* Keeps image aspect ratio */
+            border-radius: 8px; /* Adds some rounding to the image corners */
+        }
+
+
+        .footer1 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+            gap: 5px; /* Spacing between columns */
+            padding: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 10px;
+            background-color: rgb(243, 250, 250);
+        }
+
+        .colum1 h2, .colum1 h4 {
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 10px;
+        }
+
+        .colum1 p, .colum1 a {
+            margin-bottom: 5px;
+            font-size: 14px;
+            line-height: 1;
+            color: #555;
+            font-size: 10px;
+        }
+
+        .socialicons {
+            display: flex;
+            gap: 10px; 
+        }
+
+        .socialicons a {
+            text-decoration: none;
+            /* color: #555;  */
+            font-size: 10px; /* Icon size */
+        }
+       
+    </style>
+</head>
+<body>
+<header>
+
+<div class="uppart">
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search for products, brand and more .....">
+      </div>
+</div>
+
+
+
+    <div class="first">
+        <img src="shelogo.jpg" style="margin-bottom: 78px;  padding-top: 0%;     float: left;   margin-left: 5%;"  width="80px" height="80px">
+        <figcaption style="font-family: monospace; color: white;  margin-bottom: 40px;" >SHE BOUTIQUE </figcaption>
+    </div>
+
+    <div class="second">
+          
+            <div class="icon">
+                <a href="signin.html" title="Signin">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </div>
+
+            <div class="icon">
+                <a href="#" title="Favorites">
+                    <i class="fas fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="icon">
+                <a href="cart.html" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+           
+            <!-- <div class="icon">
+                <a href="signout.html" title="Signout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div> -->
+        </div>
+
+
+
+        <div class="product-container">
+            <div class="product">
+                <input type="checkbox" id="sale-details" class="toggle">
+                <p class="product-name"><label for="sale-details">SALE</label></p>
+                <div class="product-details1">
+                    <a href="#">
+                        BLING IT ON SALE<br>
+                        BUY 2 GET 1 FREE<br>
+                        FLAT DISCOUNTS<br>
+                        FLAT 50% OFF<br>
+                        FLAT 30% OFF<br>
+                        FLAT 25% OFF<br>
+                        FLAT 20% OFF
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="sarees-details" class="toggle">
+                <p class="product-name"><label for="sarees-details">SAREES</label></p>
+                <div class="product-details1">
+                    <a href="#">
+                        Floral Sarees<br>
+                        Pastel Sarees<br>
+                        Sequins Sarees<br>
+                        Stonework Sarees<br>
+                        Black Sarees<br>
+                        Yellow Sarees<br>
+                        Red Sarees<br>
+                        Green Sarees<br>
+                        Pink Sarees
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="materials-details" class="toggle">
+                <p class="product-name"><label for="materials-details">MATERIALS</label> </p>
+                <div class="product-details1">
+                    <a href="#">
+                        Printed Dress Materials<br>
+                        Threadwork Dress Materials<br>
+                        Floral Dress Materials<br>
+                        Black Dress Materials<br>
+                        Red Dress Materials<br>
+                        Peach Dress Materials
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="collections-details" class="toggle">
+                <p class="product-name"><label for="collections-details">COLLECTIONS</label></p>
+                <div class="product-details1">
+                    <a href="#">
+                       Kalamkari<br>
+                       Ethnic Skirts<br>
+                       Designer Blouses<br>
+                       Kanjivaram Sarees With Cutwork
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="lehangass-details" class="toggle">
+                <p class="product-name"><label for="lehangass-details">LEHANGAS</label> </p>
+                <div class="product-details1">
+                    <a href="#">
+                   
+                        Wedding Suits <br>
+                        Party Wear Suits<br>
+                        Haldi Suits<br>
+                        Reception Suits<br>
+                        Festive Suits<br>
+                            Silk Lehengas<br>
+                            Velvet Lehengas
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="newarrivals-details" class="toggle">
+                <p class="product-name"><label for="newarrivals-details"> ARRIVALS</label></p>
+                <div class="product-details1">
+                   <a href="#">
+                        Sarees  <br>
+                        Lehengas <br>
+                        Dress Materials  <br>
+                        Salwar Suits  <br>
+                        Gowns
+                   </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="occasions-details" class="toggle">
+                <p class="product-name"><label for="occasions-details"> OCCASIONS</label> </p>
+                <div class="product-details1">
+                    <a href="#"> 
+                        Haldi <br> 
+                        Mehandi  <br>
+                        Sangeet  <br>
+                        Wedding <br>
+                        Reception  <br>
+                        Engagement 
+                    </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="others-details" class="toggle">
+                <p class="product-name"><label for="others-details">OTHERS</label></p>
+                <div class="product-details1">
+                   <a href="#">
+                        Gowns <br> 
+                        Blouses  <br>
+                        Dupatta 
+                   </a>
+                </div>
+            </div>
+
+            <div class="product">
+                <input type="checkbox" id="stores-details" class="toggle">
+                <p class="product-name"><label for="stores-details">STORES</label></p>
+                <div class="product-details1">
+                    <a href="#">
+                     Thiruvananthapuram, Kerala<br>
+                     Pune, Maharashtra<br>
+                     Kochi, Kerala
+                    </a>
+                </div>
+            </div>
+        </div>
+</header>
+
+<!-- <div class="nospace"> -->
+
+<center>
+    <div class="image-slider">
+        <div class="slide">
+          <img src="diwaliglam.avif" alt="Image 1">
+        </div>
+        <div class="slide">
+          <img src="seemagujral.avif" alt="Image 2">
+        </div>
+        <div class="slide">
+          <img src="jashne.avif" alt="Image 3">
+        </div>
+        <div class="slide">
+          <img src="bhaidooj.avif" alt="Image 4">
+        </div>
+      </div>
+</center>
+<br>
+<!-- </div> -->
+
+
+    <div class="heading1">
+        <div class="headle">
+            <p>
+                <h3>Product Categories</h3>
+            </p>
+        </div>
+        <div class="headri">
+        <p>
+            <h4>View All  <a href="#"  style="border-radius: 20px; background-color: rgb(234, 233, 233); color: black; text-decoration: none; font-size: 10px;"     >></a></h4>
+        </p> 
+        </div>
+    </div>
+
+
+    <div class="front">
+        <div class="frontbox">
+            <a href="#">
+                <img src="green2.jpg" alt="Sarees">
+            </a>
+            <p class="caption">SAREES</p>
+        </div>
+        <div class="frontbox">
+            <a href="#">
+                <img src="clothma.jpeg" alt="cloth material">
+            </a>
+            <p class="caption">DRESS MATERIALS</p>
+        </div>
+        <div class="frontbox">
+            <a href="#">
+                <img src="whitesa1.jpg" alt="Salwar">
+            </a>
+            <p class="caption">SALWAR SUITS</p>
+        </div>
+        <div class="frontbox">
+            <a href="#">
+                <img src="pinkle.avif" alt="lehangas">
+            </a>
+            <p class="caption">LEHANGAS</p>
+        </div>
+        <div class="frontbox">
+            <a href="#">
+                <img src="gowns.jpg" alt="Gowns">
+            </a>
+            <p class="caption">GOWNS</p>
+        </div>
+    </div>
+<br>
+
+
+
+<div style="  width: 90%; margin: 0 auto; border-bottom: 2px solid rgb(183, 179, 179);"></div><br>
+
+
+<div class="heading1">
+    <div class="headle">
+        <p>
+            <h3>Ready to Wear</h3>
+        </p>
+    </div>
+
+    <div class="filtercontainer">
+        <label for="filterbox">SORT BY:</label> 
+        <div class="filterbox" id="filterbox" tabindex="0">
+            <span>Price:Low to High</span>
+        </div>
+    
+        <div class="filteroptions">
+            <p class="filteroption">Relevance</p>
+            <p class="filteroption">Price: Low to High</p>
+            <p class="filteroption">Price: High to Low</p>
+            <p class="filteroption">New Arrival</p>
+            <p class="filteroption">Discount: Low to High</p>
+            <p class="filteroption">Discount: High to Low</p>
+        </div>
+    </div>
+
+    <!-- <div class="headri">
+    <p> -->
+        <!-- <h4>View All  <a href="#"  style="border-radius: 20px; background-color: rgb(234, 233, 233); color: black; text-decoration: none; font-size: 10px;"     >></a></h4> -->
+    <!-- </p> 
+    </div> -->
+</div>
+
+<br>
+
+<div class="horisection">
+        <!-- First image pair (firstimage/secondimage) -->
+        <div class="horizontal">
+            <img src="readyto.webp" alt="First Image" class="firstimage">
+            <img src="readyto2.webp" alt="Second Image" class="secondimage">
+            <center><a href="#" style="text-decoration: none;"><div class="sareecap">Sarees -></div></a></center>
+        </div>
+
+        <!-- Second image pair (thirdimage/fourthimage) -->
+        <div class="horizontal">
+            <img src="rwwhitesalwa.jpg" alt="Third Image" class="thirdimage">
+            <img src="rwwhitesalwa2.webp" alt="Fourth Image" class="fourthimage">
+            <center><a href="#" style="text-decoration: none;"><div class="sareecap">Salwar -></div></a></center>
+        </div>
+
+        <!-- Third image pair (fifthimage/sixthimage) -->
+        <div class="horizontal">
+            <img src="rwlehanga.jpg" alt="Fifth Image" class="fifthimage">
+            <img src="rwlehanga2.jpg" alt="Sixth Image" class="sixthimage">
+            <center><a href="#" style="text-decoration: none;"><div class="sareecap">Lehangas -></div></a></center>
+        </div>
+</div>
+
+
+<div class="topst1">
+    <div class="topst">
+        Most Loved Styles
+    </div>
+</div>
+
+
+    <div class="imagerow5">
+        
+            <div class="imageitem5">
+                <img src="demebygabrilla.avif" >
+                <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">DEME BY GABRIELLA<br>SHOP NOW<br>₹25,200</a></div> 
+            </div>
+            <div class="imageitem5">
+                <img src="nayantarra.jpg" >
+                <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">NAYANTARRA<br>SHOP NOW<br>₹16,149</a></div> 
+            </div>
+            <div class="imageitem5">
+                <img src="houseoffett.webp" >
+                <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">HOUSE OF FETT<br>SHOP NOW<br>₹7,497</a></div> 
+            </div>
+            <div class="imageitem5">
+                <img src="aroka.webp" >
+                <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">AROKA<br>SHOP NOW<br>₹4,400</a></div> 
+            </div>
+            <div class="imageitem5">
+                <img src="sakshaandkinni.avif" >
+                <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">SAAKSHA & KINNI<br>SHOP NOW<br>₹10,000</a></div> 
+            </div>
+      
+    </div>
+
+
+    <div class="topst1">
+        <div class="topst">
+            Top Stories
+        </div>
+    </div>
+
+
+     <!-- First row of images -->
+     <div class="festiveshop">
+        <div class="fest1">
+            <img src="topstories1.webp">
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Bhai Dooj Specials <br>SHOP NOW<br>₹7,200</a></div> 
+        </div>
+
+
+        <div class="fest1">
+            <img src="topstories2.avif" >
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Pre-Draped Sarees <br>SHOP NOW<br>₹15,000</a></div>  
+        </div>
+
+
+        <div class="fest1">
+            <img src="topstories3.webp" >
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Alluring Anarkalis <br>SHOP NOW<br>₹11,399</a></div> 
+        </div>
+    </div>
+
+
+
+
+    <div class="festiveshop">
+        <div class="fest1">
+            <img src="topstories4.avif" >
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Festive Favourites <br>SHOP NOW<br>₹20,149</a></div> 
+        </div>
+
+
+        <div class="fest1">
+            <img src="topstories5.avif" >
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Pre-Wedding Styles <br>SHOP NOW<br>₹14,569</a></div>  
+        </div>
+
+
+        <div class="fest1">
+            <img src="topstories6.webp" >
+            <div class="festdetails">
+                <div class="size-chart">
+                    <!-- First row: 5 buttons -->
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <!-- Second row: 4 buttons -->
+                    <button>XXL</button>
+                    <button>XXXL</button>
+                    <button>4XL</button>
+                    <button>5XL</button>
+                </div>
+                <!-- Add to cart button centered below -->
+                <button class="addtocart">Add to Cart</button>
+            </div>
+            <div class="festcaption"><a href="#"  style="text-decoration: none; color: black;">Seasonal Shades <br>SHOP NOW<br>₹17,649</a></div> 
+        </div>
+    </div>
+<br>
+
+<div style="  width: 90%; margin: 0 auto; border-bottom: 2px solid rgb(183, 179, 179);"></div><br><br>
+
+
+
+
+<div class="sale">
+    <div class="left">
+        <p>
+            <h6>The Bling it on sale - Upto 50% Off</h6>
+            <a href="#" style="text-decoration: none;  color: black ;  font-size: 10px;">Don't miss out!!</a>
+        </p>
+    </div>
+    <div class="right">
+    <p>
+        <h6>Exclusive to our app: Limited-time offers just for you</h6>
+        <a href="#" style="text-decoration: none;  color: black ;  font-size: 10px;">Download the SHE App</a> 
+    </p> 
+    </div>
+</div>
+
+<br>
+
+
+
+
+<footer>
+    <div class="footer1">
+        <!-- Column 1 -->
+        <div class="colum1">
+            <h1 style="color: rgb(242, 119, 139); font-size: 40px; font-family: Arial, Helvetica, sans-serif;">SHE</h1>
+            <p>About She</p>
+            <p>Careers</p>
+            <p>In Store Events</p>
+            <p>Contact Us</p>
+            <p>Important Information</p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="colum1">
+            <h4>BUYING GUIDE</h4>
+            <p>Gift Card</p>
+            <p>Gift Card T&C</p>
+            <p>Loyalty T&C</p>
+            <p>She Advantage</p>
+            <p>Coupon Code & Offers T&C</p>
+            <p>FAQs</p>
+            <p>Cancellations, Returns & Exchanges</p>
+            <p>Shipping & Delivery</p>
+            <p>Payment Options</p>
+            <p>Give Us Feedback</p>
+            <p>Order Customization</p>
+            <p>Celebrity Style</p>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="colum1">
+            <h4>ACCOUNT</h4>
+            <p>Orders & Returns</p>
+            <p>Account Details</p>
+            <p>She Wallet</p>
+            <p>Addresses</p>
+            <p>She Loyalty Points</p>
+            <h4>POLICIES</h4>
+            <p>Terms & Conditions</p>
+            <p>Security & Privacy</p>
+            <p>Purchase Order Policy</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="colum1">
+            <h4>CONTACT US</h4>
+            <p>Store Locator</p>
+            <p>Toll Free: 01252732223 (Mon-Fri 10am-10pm IST)</p>
+            <p>Whatsapp: +91 8294995076</p>
+            <p>contactus@shefashions.com</p>
+            <h4>FOLLOW US</h4>
+            <div class="socialicons">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

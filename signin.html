@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif */
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+        }
+        .login-container {
+            /* background-color: white; */
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px; 
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(52, 51, 51);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        input{
+            width: 105%; 
+            padding: 10px;
+            margin: 10px 0; 
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        button {
+            background-color: black; 
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 50%; 
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+
+        }
+        button:hover {
+            background-color: #333; /* Darker on hover */
+        }
+        .link {
+            display: block; /* Makes link full width */
+            text-align: center; /* Center align the link */
+            margin-top: 10px; /* Space above the link */
+            /* text-decoration: none; */
+            color: rgb(133, 131, 131); 
+            font-size: 13px;
+        }
+        .link2 {
+            color: rgb(133, 131, 131);
+            font-size: 13px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="index.html">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <a href="#" class="link2">Forgot your password?</a><br><br>
+            <center><button type="submit"></a>Sign In</button></center>
+        </form>
+        <a href="create.html" class="link">Create Account</a>
+    </div>
+
+
+
+
+
+</body>
+</html>
